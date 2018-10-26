@@ -165,14 +165,14 @@ public class IntVar {
         Runnable r1 = new Runnable() {
             public void run() {
                 // your code
-            		v.incIt();
+            		v.syncIncIt();
             }
         };
 
         Runnable r2 = new Runnable() {
             public void run() {
                 // your code
-            		v.doubleIt();
+            		v.syncDoubleIt();
             }
         };
 
