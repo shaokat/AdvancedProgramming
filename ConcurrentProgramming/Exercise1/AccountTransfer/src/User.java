@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+import java.util.Random;
 
 public class User extends Thread 
 {
@@ -23,21 +25,56 @@ public class User extends Thread
 		while(true)
 		{
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			Random rand = new Random();
+			//int  n = rand.nextInt(50) + 1;
+			int r;
+			while(true)
+			{
+				r = rand.nextInt(numberOfUser);
+				if(r != this.num) break;
+			}
+			User fromUser = this;
+			User toUser = usr[r];
+			int op = rand.nextInt(3);
 			
+			double amount = (100 - 0) * rand.nextDouble();
+			amount =Double.parseDouble(new DecimalFormat("##.##").format(amount));
 			
+			//System.out.println("Test random Amount: " + amount);
+			if(op == 0)
+			{
+				System.out.println("User #"+this.num + " --> Deposit Amount " + amount);
+				this.acnt.deposit(amount);
+			}
+			else if(op == 1)
+			{
+				double ret = fromUser.acnt.safeTransfer(amount);
+				toUser.acnt.deposit(ret);
+				System.out.println("Trasfer Amount " + amount + "--> From "+fromUser.getUserName() + "   To "+toUser.getUserName());
+				
+			}
+			else
+			{
+
+				double ret = this.acnt.safeWithdraw(amount);
+				System.out.println("User #"+this.num + " --> Withdraw Amount " + ret);
+			}
 		}
 	}
 	
+	public static int numberOfUser = 10;
+	public static User usr[] = new User[numberOfUser];
+	
 	public static void main(String args[])
 	{
-		int numberOfUser = 3;
+
 		Account account[] = new Account[numberOfUser];
-		User usr[] = new User[numberOfUser];
+
 		
 		for(int i=0; i<numberOfUser; i++)
 		{

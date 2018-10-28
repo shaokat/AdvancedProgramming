@@ -20,6 +20,17 @@ public class Account {
     		return amount;
     }
     
+    public synchronized double safeWithdraw(double amount)
+    {
+    		if(this.balance >= amount)
+    		{
+    			this.balance -= amount;
+    			return amount;
+    		}
+    		
+    		return 0.0;
+    } 
+    
     public synchronized double safeTransfer(double amount)
     {
     		if(this.balance >= amount)
