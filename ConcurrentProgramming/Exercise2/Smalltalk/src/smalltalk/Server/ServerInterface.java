@@ -14,6 +14,9 @@ import smalltalk.Client.ClientInterface;
  * @author RajibTheKing
  */
 public interface ServerInterface extends Remote{
-    void registerNewClient(ClientInterface clientIF) throws RemoteException;
-    void broadCastMessage(String msg) throws RemoteException; 
+    
+    public void registerNewClient(ClientInterface clientIF, String name) throws RemoteException;
+    public void unRegisterClient(String name) throws RemoteException;
+    public void broadCastMessage(String msg) throws RemoteException; 
+    public void requestToGetUserList(ClientInterface clientIF) throws RemoteException;
 }

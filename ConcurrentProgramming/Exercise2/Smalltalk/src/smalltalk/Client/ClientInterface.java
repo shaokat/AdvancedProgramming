@@ -11,6 +11,7 @@ package smalltalk.Client;
  */
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /** This is an interface for a simple RMI talk client */
 public interface ClientInterface extends Remote {
@@ -25,5 +26,9 @@ public interface ClientInterface extends Remote {
     public void send(String msg) throws RemoteException;
     
     public void broadCastedMsg(String msg) throws RemoteException;
+    
+    public void handleServerMsg(String msg) throws RemoteException;
+    
+    public void gotUserList(ArrayList<String> names) throws RemoteException;
 
 }

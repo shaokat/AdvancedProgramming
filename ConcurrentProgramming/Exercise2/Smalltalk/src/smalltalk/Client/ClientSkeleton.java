@@ -13,9 +13,11 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import smalltalk.Server.ServerInterface;
 
 /**
@@ -31,7 +33,7 @@ public class ClientSkeleton extends UnicastRemoteObject implements ClientInterfa
         super();
         this.name = name;
         this.serverIF =  serverIF;
-        this.serverIF.registerNewClient(this);
+        this.serverIF.registerNewClient(this, this.name);
         
     }
     /**
@@ -105,6 +107,28 @@ public class ClientSkeleton extends UnicastRemoteObject implements ClientInterfa
     public void sendMsgToServer(String msg) throws RemoteException
     {
         this.serverIF.broadCastMessage(this.name + ": " + msg);
+    }
+    public void requestToGetUserList() throws RemoteException
+    {
+        this.serverIF.requestToGetUserList(this);
+    }
+    public void unRegisterclient() throws RemoteException
+    {
+        this.serverIF.unRegisterClient(this.name);
+    }
+    
+    public void handleServerMsg(String msg) throws RemoteException
+    {
+        if(msg.compareTo("User Exists")==0)
+        {
+            JOptionPane.showConfirmDialog(null, "This userID: " + this.name + " already Exists. Please Try Different name");
+            System.exit(0);
+        }
+    }
+    
+    public void gotUserList(ArrayList<String> names) throws RemoteException
+    {
+        ClientStartingPoint.getFrame().updateUserList(names);
     }
 
     
