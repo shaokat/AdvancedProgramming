@@ -180,11 +180,17 @@ public class IntVar {
     }
 
     public static void main(String[] args) {
-        zero();
-        one();
-        two();
-        syncZero();
+    		while(true) 
+    		{
+    			//zero();
+    			//one();
+    			//two();
+    			syncZero();
+    			//Thread.sleep(100);
+    		}
     }
+        
+    
 
 }
 
