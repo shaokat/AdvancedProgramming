@@ -10,11 +10,6 @@ import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
-import smalltalk.Client.ClientSkeleton;
-import smalltalk.Client.ClientInterface;
 
 /**
  *

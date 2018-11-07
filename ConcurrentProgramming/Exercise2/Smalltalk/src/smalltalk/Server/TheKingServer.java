@@ -109,4 +109,17 @@ public class TheKingServer extends UnicastRemoteObject implements ServerInterfac
         clientIF.gotUserList(this.registeredNames);
     }
     
+    public void sendMessage(String from, String to, String message) throws RemoteException
+    {
+        ClientInterface cif = null;
+        for(int i=0; i<this.registeredNames.size();i++)
+        {
+            if(this.registeredNames.get(i).compareTo(to) == 0)
+            {
+                cif = this.chatClients.get(i);
+            }
+        }
+        cif.gotMessage(from, to, message);
+    }
+    
 }

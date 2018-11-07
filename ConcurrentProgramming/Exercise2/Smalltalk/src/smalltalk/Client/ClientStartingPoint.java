@@ -7,7 +7,6 @@ package smalltalk.Client;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -23,11 +22,13 @@ public class ClientStartingPoint {
      * Start a new talk client
      */
     private static ClientFrame clientFrame = new ClientFrame();
+    public static privateChat prvtChat = null;
     private static ClientSkeleton client;
     public static ClientFrame getFrame()
     {
         return clientFrame;
     }
+    
     public static ClientSkeleton getClient()
     {
         return client;

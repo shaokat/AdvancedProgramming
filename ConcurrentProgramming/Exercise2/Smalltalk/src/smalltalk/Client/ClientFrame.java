@@ -8,6 +8,8 @@ package smalltalk.Client;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -24,8 +26,26 @@ public class ClientFrame extends javax.swing.JFrame {
     /**
      * Creates new form ClientFrame
      */
+    ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String sourceText = e.getSource().toString();
+            int pos = sourceText.indexOf("text=");
+            pos+=5;
+            String name = "";
+            for(int i=pos; i<sourceText.length(); i++)
+            {
+                if(sourceText.charAt(i)==',') break;
+                name+=sourceText.charAt(i);
+            }
+            System.out.println("Clicked for user: " + name);
+            ClientStartingPoint.prvtChat = new privateChat(ClientStartingPoint.getClient().getClientName(), name);
+            ClientStartingPoint.prvtChat.setVisible(true);
+        }
+    };
     public ClientFrame() {
         initComponents();
+        
         setLocationRelativeTo(null);
     }
     public void setClientName(String name)
@@ -195,9 +215,14 @@ public class ClientFrame extends javax.swing.JFrame {
         for(int i=0; i<names.size(); i++)
         {
             String name = names.get(i);
+            if(name.compareTo(ClientStartingPoint.getClient().getClientName())==0)
+            {
+               continue;
+            }
             buttons[i] = new JButton();
             buttons[i].setText(name);
             buttons[i].setVisible(true);
+            buttons[i].addActionListener(actionListener);
             userListPane.add(buttons[i]);
             
         }

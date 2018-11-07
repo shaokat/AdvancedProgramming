@@ -36,6 +36,10 @@ public class ClientSkeleton extends UnicastRemoteObject implements ClientInterfa
         this.serverIF.registerNewClient(this, this.name);
         
     }
+    public String getClientName()
+    {
+        return this.name;
+    }
     /**
      * Create a new registry or connect to the existing one
      */
@@ -108,6 +112,10 @@ public class ClientSkeleton extends UnicastRemoteObject implements ClientInterfa
     {
         this.serverIF.broadCastMessage(this.name + ": " + msg);
     }
+    public void sendMessage(String from, String to, String message) throws RemoteException
+    {
+        this.serverIF.sendMessage(from, to, message);
+    }
     public void requestToGetUserList() throws RemoteException
     {
         this.serverIF.requestToGetUserList(this);
@@ -129,6 +137,17 @@ public class ClientSkeleton extends UnicastRemoteObject implements ClientInterfa
     public void gotUserList(ArrayList<String> names) throws RemoteException
     {
         ClientStartingPoint.getFrame().updateUserList(names);
+    }
+    
+    public void gotMessage(String from, String to, String msg) throws RemoteException
+    {
+        if(ClientStartingPoint.prvtChat == null)
+        {
+            ClientStartingPoint.prvtChat = new privateChat(to, from);
+            ClientStartingPoint.prvtChat.setVisible(true);
+        }
+        
+        ClientStartingPoint.prvtChat.updatePrivateChatRoomPanel(from, msg);
     }
 
     

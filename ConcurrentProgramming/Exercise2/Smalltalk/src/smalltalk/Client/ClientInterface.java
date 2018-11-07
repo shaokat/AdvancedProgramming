@@ -30,5 +30,7 @@ public interface ClientInterface extends Remote {
     public void handleServerMsg(String msg) throws RemoteException;
     
     public void gotUserList(ArrayList<String> names) throws RemoteException;
+    
+    public void gotMessage(String from, String to, String msg) throws RemoteException;
 
 }
