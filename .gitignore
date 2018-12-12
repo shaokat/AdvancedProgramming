@@ -9,4 +9,6 @@
 /ConcurrentProgramming/Exercise2/BufferExtended/nbproject/private/
 /ConcurrentProgramming/Exercise2/BufferExtended/build/
 /ConcurrentProgramming/Exercise2/BufferExtended/dist/
-FunctionalProgramming/Exercise_3/a.out
+*.out
+*.class
+*.DS_Store
