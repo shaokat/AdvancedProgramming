@@ -17,7 +17,14 @@ find :: a -> (KVS a b) -> Maybe b
 find x s = s x
 
 fromList :: Eq a => [(a, b)] -> KVS a b
---fromList = foldl (flip (uncurry insert)) empty
 fromList [] = empty
 fromList ((x,y): xys) = insert x y (fromList xys)
+
+toList :: KVS Int String -> [(Int, Maybe String)]
+toList s = doIt [1..100]
+         where
+            doIt [] = []
+            doIt (x:xs) | find x s == Nothing = doIt xs 
+                        | otherwise = (x, (find x s)) : doIt xs
+
 
