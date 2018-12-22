@@ -12,3 +12,5 @@
 *.out
 *.class
 *.DS_Store
+*.hi
+*.o
