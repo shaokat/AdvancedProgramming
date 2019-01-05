@@ -1,0 +1,43 @@
+** Inheritence, Overloading, Overriding, polymorphism, encapsulation , abstraction, interfece, exception, thread. 
+
+** What is meant by Local variable and Instance variable?
+
+** Difference between Array and Array List
+
+**  Difference between String, String Builder, and String Buffer
+
+** Difference between HashMap and HashTable
+
+** Difference between HashSet and TreeSet
+
+** Access specifier
+
+** When to use Runnable interface Vs Thread class in Java
+
+** What is Synchronization
+
+** What is the difference between Process and Thread?
+
+** What are different states in lifecycle of Thread?
+
+** Why thread communication methods wait(), notify() and notifyAll() are in Object class?
+
+** What is volatile keyword in Java
+
+** What is atomic operation? What are atomic classes in Java Concurrency API?
+
+** What is Thread Pool? How can we create Thread Pool in Java?
+
+** What are differences between wait and sleep method in Java?
+
+** Write code to solve the Produce consumer problem in Java?
+
+** What is a race condition? How will you find and solve race condition?
+
+** What is the difference between preemptive scheduling and time slicing?
+
+** What does join() method?
+
+** What is the Executor interface in Concurrency API in Java?
+
+** Define FutureTask class in Java?

@@ -5,6 +5,21 @@ vals2 = [(x, even x) | x <- [5,20,25]]
 vals3 = [Just x | x <- [1,9,25]]
 vals4 = [(x,y) | x <- [1,2,3,4], y <- [5,4,3,2], y > x ]
 
+--Corrected
+list1 :: [[Int]]
+list1 = [ [i*2+1] | i <- [1 .. 5]]
+
+list2 :: [(Int, Bool)]
+list2 = [ (i*5, even i) | i <- [1 .. 5], i /= 2, i /= 3]
+
+list3 :: [Maybe Int]
+list3 = [ (Just (i*i)) | i <- [1 .. 5], i /= 2, i /= 4]
+
+list4 :: [(Int, Int)]
+list4 = [ (i,j) | i <- [1 .. 5], j <- [5,4..2], i < j ]
+
+
+
 --[[3],[5],[7],[9],[11]]
 --[(5,False),(20,True),(25,False)]
 --[Just 1,Just 9,Just 25]
