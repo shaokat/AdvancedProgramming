@@ -14,3 +14,5 @@
 *.DS_Store
 *.hi
 *.o
+/ConcurrentProgramming/Exercise2/analyzeFacbook/nbproject/private/
+/ConcurrentProgramming/Exercise2/analyzeFacbook/build/
