@@ -1,3 +1,4 @@
+import Prelude hiding (Monoid)
 data Peano = Z | S Peano deriving (Eq, Show)
 
 class SemiGroup a where
@@ -14,14 +15,9 @@ var2 = S (S (S (S (S Z))))
 
 
 instance SemiGroup Peano where
-    (<+>) v1 v2 = makePeano ( (peanoToInt v1) + (peanoToInt v2) )
+    Z <+> n = n
+    n <+> Z = n
+    S n <+> S m = S (S (n <+> m))
 
-
-peanoToInt :: Peano -> Int
-peanoToInt Z = 0
-peanoToInt (S rest) = 1 + (peanoToInt rest)
-
-
-makePeano :: Int -> Peano
-makePeano 0 = Z
-makePeano x = S (makePeano (x-1))
+instance Monoid Peano where
+    neutral = Z

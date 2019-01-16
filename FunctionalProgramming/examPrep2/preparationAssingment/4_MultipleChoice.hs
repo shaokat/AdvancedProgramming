@@ -7,7 +7,7 @@
        4. [Int,Bool]
        5. [(Int,Bool),(Int,Bool)]
 
-Answer: 1, 3
+Answer: 1
 
 var1 :: Ord a => [(a, Bool)]
 var1 = [(0, False)]
@@ -51,7 +51,7 @@ nonsense x y = x y y
         4. data Tree a = Tip (Tree a) | Branch (Tree a) (Tree a)
         5. data Tree a = Tip Int | Branch (Tree a) (Tree a)
 
-Answer: 2 5
+Answer: 1 2 5
 -}
 
 data Tree a = Tip Int | Branch (Tree a) (Tree a)
