@@ -26,7 +26,7 @@ desort = (reverse . sort)
 {-
 h x y = f (g x y) which is valid for this expression
 
-a) f . g  
+a) f . g 
 b) (f.) . g  
 c) (.) f (.g)  
 d) f (.g) 
