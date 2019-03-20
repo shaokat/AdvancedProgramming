@@ -31,6 +31,37 @@ tree1 = Node 15
         	)
         )
 
+
+tree2 :: SearchTree Int
+tree2 = Node 2 
+		(
+			(
+				Node 1
+					Empty
+					Empty
+			) 
+			
+		) 
+		(
+			Node 6 
+			(
+				Node 4
+					Empty
+					(
+						Node 5
+							Empty
+							Empty		
+					)
+			) 
+			(
+				Node 7
+					Empty
+					Empty
+			)
+		)
+
+
+
 compareVal :: Ord a => a -> a -> Ordering
 compareVal x y | x == y     = EQ
                | x > y      = GT
