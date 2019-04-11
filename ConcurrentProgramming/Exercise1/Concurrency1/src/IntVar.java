@@ -12,7 +12,7 @@ public class IntVar {
     
     public IntVar()
     {
-    		this.i = 0;
+    	this.i = 0;
     }
 
     public int getValue() {
@@ -24,23 +24,27 @@ public class IntVar {
     }
 
     public void doubleIt() {
-    		this.i *= 2;
+        int temp = getValue();
+        sleep(1000); //allow other threads to get the value on the meantime
+    	setValue(temp * 2);
     }
 
     public void incIt() {
-    		this.i += 1;
+        int temp = getValue();
+        sleep(1000); //allow other threads to get the value on the meantime
+    	setValue(temp+1);
     }
     
     public void syncDoubleIt() {
-    		synchronized (this) {
-    			this.i *= 2;
-    		}
+    	synchronized (this) {
+    		doubleIt();
+    	}
     }
 
     public void syncIncIt() {
-    		synchronized (this) {
-    			this.i += 1;
-    		}
+    	synchronized (this) {
+    		incIt();
+    	}
     }
 
     /**
@@ -85,7 +89,7 @@ public class IntVar {
         final IntVar v = new IntVar();
 
         // You might want to adjust this value
-        long sleepingTime = 0;
+        long sleepingTime = 500;
 
         Runnable r1 = new Runnable() {
             public void run() {
@@ -110,7 +114,7 @@ public class IntVar {
         final IntVar v = new IntVar();
 
         // You might want to adjust this value
-        long sleepingTime = 100;
+        long sleepingTime = 500;
 
         Runnable r1 = new Runnable() {
             public void run() {
@@ -135,7 +139,7 @@ public class IntVar {
         final IntVar v = new IntVar();
 
         // You might want to adjust this value
-        long sleepingTime = 100;
+        long sleepingTime = 2000;
 
         Runnable r1 = new Runnable() {
             public void run() {
@@ -160,7 +164,7 @@ public class IntVar {
         final IntVar v = new IntVar();
 
         // You might want to adjust this value
-        long sleepingTime = 0;
+        long sleepingTime = 500;
 
         Runnable r1 = new Runnable() {
             public void run() {
@@ -180,14 +184,12 @@ public class IntVar {
     }
 
     public static void main(String[] args) {
-    		while(true) 
-    		{
-    			//zero();
-    			//one();
-    			//two();
+
+    			zero();
+    			one();
+    			two();
     			syncZero();
-    			//Thread.sleep(100);
-    		}
+    		
     }
         
     

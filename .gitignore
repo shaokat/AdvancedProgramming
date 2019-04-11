@@ -16,3 +16,5 @@
 *.o
 /ConcurrentProgramming/Exercise2/analyzeFacbook/nbproject/private/
 /ConcurrentProgramming/Exercise2/analyzeFacbook/build/
+/ConcurrentProgramming/Exercise2/SazibTest/nbproject/private/
+/ConcurrentProgramming/Exercise2/SazibTest/build/

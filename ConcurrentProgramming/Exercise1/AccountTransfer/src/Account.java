@@ -11,7 +11,7 @@ public class Account {
     }
 
     public synchronized void deposit(double amount) {
-        balance += amount;
+        this.balance += amount;
     }
     
     public synchronized double transfer(double amount)
